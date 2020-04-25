@@ -5,7 +5,7 @@
 
 ## Install
 
-```
+```py
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -43,17 +43,23 @@ import time
     
 ### bs4
 参考地址：https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html#
+
+find：返回第一个匹配。 
+```py
+find("a", attrs={'class': 'page-link', 'rel': 'next'})
 ```
-find：返回第一个匹配。 find("a", attrs={'class': 'page-link', 'rel': 'next'})
 find_all：返回匹配到的结果数组，方法同上。
-select：返回匹配到的结果数组，可以使用css选择器（推荐）。select('span.card-name')
-css选择器：
-        普通不带任何符号，代表tag名
-        . 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开的
-        
-        <div class='content-area main-content'>
-        
-        # 后面跟id
+
+select：返回匹配到的结果数组，可以使用css选择器（推荐）。
+```py
+select('span.card-name')
+```
+
+css选择器书写方法
+```py
+div   # tag
+.     # 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开)
+#     # 后面跟id
 ```
  
 
