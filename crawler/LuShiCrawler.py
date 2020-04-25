@@ -9,11 +9,12 @@ import time
 def download_list(_url: str, _file_path):
     """
     使用递归方式获取列表，存储成文件
-    :param _page_num: 页码
+    :param _file_path: 存储路径
     :param _url: 开始页面url
     :return:
     """
-    reg1 = re.compile(r'^http(s){0,1}:\/\/[a-zA-z0-9.\/]+?\/page\/(\d+)')
+    # 使用正则取url的页码
+    reg1 = re.compile(r'^http(s)?:\/\/[a-zA-z0-9.\/]+?\/page\/(\d+)')
     match_res = reg1.search(_url)
     _page_num = 1
     if match_res:
@@ -50,7 +51,8 @@ def download_deck(_url, _file_path, _count):
     _resp = requests.get(_url, headers=config.headers)
     _soup = BeautifulSoup(_resp.text, 'lxml')
 
-    reg2 = re.compile(r'^http(s){0,1}:\/\/[a-zA-z0-9.\/]+?\/decks\/([a-zA-z\-0-9]+)')
+    # 使用正则取url中包含的卡组命名
+    reg2 = re.compile(r'^http(s)?:\/\/[a-zA-z0-9.\/]+?\/decks\/([a-zA-z\-0-9]+)')
     reg_res = reg2.search(_url)
     _deck_name = '无名卡组'
     if reg_res:
@@ -76,16 +78,27 @@ def download_deck(_url, _file_path, _count):
 
 
 if __name__ == '__main__':
+
+    # 卡组链接保存地址
     deck_url = "../resource/deck_url.txt"
+
+    # 卡组信息保存地址
     _deck_frame_path = '../resource/deck_frame.txt'
 
+    # 首先删除存储文件
     if os.path.exists(deck_url):
         os.remove(deck_url)
+    if os.path.exists(_deck_frame_path):
+        os.remove(_deck_frame_path)
+
+    # 构建新文件
     os.makedirs(os.path.dirname(deck_url), exist_ok=True)
+    os.makedirs(os.path.dirname(_deck_frame_path), exist_ok=True)
+
+    # 下载所有卡组url
     download_list(config.start_url, deck_url)
 
     # 遍历url下载所有卡组
-    os.makedirs(os.path.dirname(_deck_frame_path), exist_ok=True)
     with open(deck_url, 'r') as f:
         i = 0
         for line in f:
