@@ -34,17 +34,17 @@ import time
             在线测试reg：https://regex101.com/
     
 2. 使用bs4：
-    参考地址：https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html#
-        - find：返回第一个匹配。 find("a", attrs={'class': 'page-link', 'rel': 'next'})
-        - find_all：返回匹配到的结果数组，方法同上。
-        - select：返回匹配到的结果数组，可以使用css选择器（推荐）。select('span.card-name')
-                - css选择器：
-                    - 普通不带任何符号，代表tag名
-                    - . 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开的，如：
+参考地址：https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html#
+(1) find：返回第一个匹配。 find("a", attrs={'class': 'page-link', 'rel': 'next'})
+(2) find_all：返回匹配到的结果数组，方法同上。
+(3) select：返回匹配到的结果数组，可以使用css选择器（推荐）。select('span.card-name')
+(4) css选择器：
+普通不带任何符号，代表tag名
+. 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开的，如：
 ```
 <div class='content-area main-content'>
 ```
-- # 后面跟id
+'# 后面跟id'
 
 
 ## Contributing
