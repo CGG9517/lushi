@@ -5,12 +5,14 @@
 
 ## Install
 
+'''
 import requests
 from bs4 import BeautifulSoup
 import re
 import crawler.config as config
 import os
 import time
+'''
 
 ## Usage
 
