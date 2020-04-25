@@ -50,6 +50,9 @@ select：返回匹配到的结果数组，可以使用css选择器（推荐）�
 css选择器：
         普通不带任何符号，代表tag名
         . 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开的
+        
+        <div class='content-area main-content'>
+        
         # 后面跟id
 ```
  
