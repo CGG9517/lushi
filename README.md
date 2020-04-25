@@ -5,14 +5,14 @@
 
 ## Install
 
-'''
+```
 import requests
 from bs4 import BeautifulSoup
 import re
 import crawler.config as config
 import os
 import time
-'''
+```
 
 ## Usage
 
@@ -40,7 +40,10 @@ import time
         select：返回匹配到的结果数组，可以使用css选择器（推荐）。select('span.card-name')
                 css选择器：
                     普通不带任何符号，代表tag名
-                    . 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开的，如<div class='content-area main-content'>）
+                    . 后面跟一个class名（一个标签中可能包含多个class，使用空格隔开的，如：
+                    ```
+                    <div class='content-area main-content'>
+                    ```
                     # 后面跟id
 
 
